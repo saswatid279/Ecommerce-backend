@@ -42,6 +42,7 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ success: false, message: "error occured, see the errMessage key for more details", errorMessage: err.message})
 })
-app.listen(3000, () => {
+app.set('port', process.env.PORT || 3000);
+app.listen(app.get('port'), () => {
   console.log('server started');
 });
